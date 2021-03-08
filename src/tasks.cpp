@@ -11,24 +11,52 @@ using std::copy;
 
 // Задание 1
 void swap_args(int *lhs, int *rhs) {
-    // напишите код здесь ...
+    if ((lhs != nullptr) && (rhs != nullptr)) {
+        int value = *lhs;
+        *lhs = *rhs;
+        *rhs = value;
+    }
 }
-
 // Задание 2
 int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
-    // напишите код здесь ...
-    return nullptr;
+    if ((num_rows >= 1) && (num_cols >= 1)) {
+        int **array_2d = new int *[num_rows];
+        for (int str_index = 0; str_index < num_rows; str_index++) {
+            array_2d[str_index] = new int[num_cols]{};
+        }
+        for (int str_index = 0; str_index < num_rows; str_index++){
+            for (int cols_index = 0; cols_index < num_cols; cols_index++ ){
+                array_2d[str_index][cols_index] = init_value;
+            }
+        }
+        return array_2d;
+    } else {
+        return nullptr;
+    }
 }
 
 // Задание 3
 bool copy_2d_array(int **arr_2d_source, int **arr_2d_target, int num_rows, int num_cols) {
-    // напишите код здесь ...
-    return false;
+    if ((arr_2d_source == nullptr) || (arr_2d_target == nullptr) || (num_rows <= 0) || (num_cols <= 0)) {
+        return false;
+    } else {
+        for (int str_index = 0; str_index < num_rows; str_index++) {
+            copy(arr_2d_source[str_index],arr_2d_source[str_index]+ num_cols, arr_2d_target[str_index]);
+        }
+    } return true;
 }
 
 // Задание 4
 void reverse_1d_array(vector<int> &arr) {
-    // напишите код здесь ...
+    int arr_size = arr.size();
+    for (int elmnt = 0; elmnt < arr_size; elmnt++) {
+        if (elmnt >= arr_size - elmnt - 1) {
+            break;
+        }
+        int value = arr[elmnt];
+        arr[elmnt] = arr[arr_size - elmnt - 1];
+        arr[arr_size - elmnt - 1] = value;
+    }
 }
 
 // Задание 5
